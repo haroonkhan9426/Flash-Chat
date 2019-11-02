@@ -42,7 +42,7 @@ class WelcomePage extends StatelessWidget {
               text: registerButtonText,
               color: darkBlue,
               onPressed: (){
-                //to be implemented
+                Navigator.pushNamed(context, registerPageId);
               },
             ),
           ],
