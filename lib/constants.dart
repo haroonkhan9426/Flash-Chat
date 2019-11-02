@@ -12,6 +12,11 @@ const welcomeScreenTextStyle = TextStyle(
   color: Colors.black,
 );
 
+const buttonTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 15.0,
+);
+
 /// String Constants
 const String loginButtonText = 'Log In';
 const String registerButtonText = 'Register';

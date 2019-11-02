@@ -9,7 +9,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0),
+        margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -19,7 +19,7 @@ class WelcomePage extends StatelessWidget {
                 Icon(
                   Icons.flash_on,
                   color: Colors.amber[400],
-                  size: 40.0,
+                  size: 50.0,
                 ),
                 SizedBox(
                   width: 10.0,
@@ -30,9 +30,22 @@ class WelcomePage extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(
+              height: 30.0,
+            ),
             CustomRoundedButton(
-              text: 'Log In',
-
+              text: loginButtonText,
+              color: lightBlue,
+              onPressed: (){
+                //to be implemented
+              },
+            ),
+            CustomRoundedButton(
+              text: registerButtonText,
+              color: darkBlue,
+              onPressed: (){
+                //to be implemented
+              },
             ),
           ],
         ),
