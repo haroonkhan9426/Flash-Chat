@@ -10,11 +10,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      home: WelcomePage(),
+//      theme: ThemeData.light(),
+//    );
       initialRoute: WelcomePage.id,
       routes: {
-        LoginPage.id: (context) => LoginPage(),
-        RegisterPage.id: (context) => RegisterPage(),
-        ChatPage.id: (context) => ChatPage(),
+        LoginPage.id : (context) => LoginPage(),
+        RegisterPage.id : (context) => RegisterPage(),
+        ChatPage.id : (context) => ChatPage(),
       },
     );
   }
