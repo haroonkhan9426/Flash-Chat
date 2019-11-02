@@ -24,3 +24,9 @@ const String welcomeMessage = 'Flash Chat';
 const String emailPlaceHolder = 'Enter your email';
 const String passwordPlaceHolder = 'Enter your password';
 const String appBarText = 'Chat';
+
+/// Screen Ids
+const String welcomePageId = 'welcome-page';
+const String registerPageId = 'register-page';
+const String loginPageId = 'login-page';
+const String chatPageId = 'chat-page';

@@ -3,6 +3,7 @@ import 'package:flash_chat/pages/login-page.dart';
 import 'package:flash_chat/pages/chat-page.dart';
 import 'package:flash_chat/pages/register-page.dart';
 import 'package:flash_chat/pages/welcome-page.dart';
+import 'constants.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,11 +14,11 @@ class MyApp extends StatelessWidget {
       home: WelcomePage(),
 //      theme: ThemeData.light(),
 //    );
-      initialRoute: WelcomePage.id,
+      initialRoute: welcomePageId,
       routes: {
-        LoginPage.id : (context) => LoginPage(),
-        RegisterPage.id : (context) => RegisterPage(),
-        ChatPage.id : (context) => ChatPage(),
+        loginPageId: (context) => LoginPage(),
+        registerPageId: (context) => RegisterPage(),
+        chatPageId: (context) => ChatPage(),
       },
     );
   }

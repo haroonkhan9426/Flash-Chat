@@ -3,8 +3,6 @@ import 'package:flash_chat/constants.dart';
 import 'package:flash_chat/custom_widgets/custom-rounded-button.dart';
 
 class WelcomePage extends StatelessWidget {
-  static const String id = 'welcome-page';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +35,7 @@ class WelcomePage extends StatelessWidget {
               text: loginButtonText,
               color: lightBlue,
               onPressed: (){
-                //to be implemented
+                Navigator.pushNamed(context, loginPageId);
               },
             ),
             CustomRoundedButton(

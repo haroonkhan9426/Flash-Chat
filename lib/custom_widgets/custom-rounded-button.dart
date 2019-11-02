@@ -12,7 +12,7 @@ class CustomRoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10.0),
-      height: 60.0,
+      height: 50.0,
       width: double.infinity,
       child: RaisedButton(
         color: color,
