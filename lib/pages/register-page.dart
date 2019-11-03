@@ -12,10 +12,13 @@ class RegisterPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(
-                Icons.flash_on,
-                color: Colors.amber[400],
-                size: 200.0,
+              Hero(
+                tag: 'flashIcon',
+                child: Icon(
+                  Icons.flash_on,
+                  color: Colors.amber[400],
+                  size: 200.0,
+                ),
               ),
               SizedBox(
                 height: 20.0,

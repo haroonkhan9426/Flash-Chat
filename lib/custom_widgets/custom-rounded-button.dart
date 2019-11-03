@@ -15,6 +15,7 @@ class CustomRoundedButton extends StatelessWidget {
       height: 50.0,
       width: double.infinity,
       child: RaisedButton(
+        elevation: 10.0,
         color: color,
         onPressed: onPressed,
         shape:

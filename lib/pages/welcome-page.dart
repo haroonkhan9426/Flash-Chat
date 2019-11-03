@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:flash_chat/custom_widgets/custom-rounded-button.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -14,17 +15,22 @@ class WelcomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(
-                  Icons.flash_on,
-                  color: Colors.amber[400],
-                  size: 50.0,
+                Hero(
+                  tag: 'flashIcon',
+                  child: Icon(
+                    Icons.flash_on,
+                    color: Colors.amber[400],
+                    size: 50.0,
+                  ),
                 ),
                 SizedBox(
                   width: 10.0,
                 ),
-                Text(
-                  'Falsh Chat',
-                  style: welcomeScreenTextStyle,
+                TyperAnimatedTextKit(
+                  text: ['Falsh Chat'],
+                  textStyle: welcomeScreenTextStyle,
+                  textAlign: TextAlign.left,
+                  alignment: AlignmentDirectional.topStart,
                 ),
               ],
             ),
@@ -34,15 +40,16 @@ class WelcomePage extends StatelessWidget {
             CustomRoundedButton(
               text: loginButtonText,
               color: lightBlue,
-              onPressed: (){
+              onPressed: () {
                 Navigator.pushNamed(context, loginPageId);
               },
             ),
             CustomRoundedButton(
               text: registerButtonText,
               color: darkBlue,
-              onPressed: (){
-                Navigator.pushNamed(context, registerPageId);
+              onPressed: () {
+                Navigator.pushNamed(
+                    context, registerPageId);
               },
             ),
           ],

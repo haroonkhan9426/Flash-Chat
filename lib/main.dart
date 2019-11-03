@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       home: WelcomePage(),
 //      theme: ThemeData.light(),
 //    );
-      initialRoute: chatPageId,
+      initialRoute: welcomePageId,
       routes: {
         loginPageId: (context) => LoginPage(),
         registerPageId: (context) => RegisterPage(),
