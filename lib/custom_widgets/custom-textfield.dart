@@ -4,13 +4,15 @@ import 'package:flash_chat/constants.dart';
 class CustomTextField extends StatelessWidget {
   final String placeHolder;
   final Function onChange;
+  final bool obscurText;
 
-  CustomTextField({this.placeHolder, this.onChange});
+  CustomTextField({this.placeHolder, this.onChange, this.obscurText});
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: TextField(
+        obscureText: obscurText,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(25, 15, 25, 15),

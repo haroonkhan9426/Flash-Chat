@@ -24,12 +24,14 @@ class RegisterPage extends StatelessWidget {
                 height: 20.0,
               ),
               CustomTextField(
+                obscurText: false,
                 placeHolder: emailPlaceHolder,
                 onChange: (val) {
                   print(val);
                 },
               ),
               CustomTextField(
+                obscurText: true,
                 placeHolder: passwordPlaceHolder,
                 onChange: (val) {
                   print(val);
