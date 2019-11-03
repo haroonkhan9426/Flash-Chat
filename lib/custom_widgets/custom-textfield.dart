@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
     return Container(
       margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: TextField(
+        textAlign: TextAlign.center,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(25, 15, 25, 15),
           hintText: placeHolder,
