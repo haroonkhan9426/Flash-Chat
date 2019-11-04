@@ -32,4 +32,12 @@ class FireBaseHelper {
       return null;
     }
   }
+
+  void logout(){
+    try{
+      _auth.signOut();
+    }catch(e){
+      print(e);
+    }
+  }
 }
