@@ -51,9 +51,10 @@ class RegisterPage extends StatelessWidget {
             color: darkBlue,
             onPressed: () async {
               print('$email, $password');
-              bool status = await FireBaseHelper()
+              var user = await FireBaseHelper()
                   .registerUser(email = email, password = password);
-              if(status){
+              if(user != null){
+                print(user.email);
                 Navigator.pushNamed(context, chatPageId);
               }else{
                 print('User Registration Failed');
