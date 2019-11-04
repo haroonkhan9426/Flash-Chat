@@ -14,6 +14,8 @@ class _RegisterPageState extends State<RegisterPage> {
   String email;
   String password;
   bool showProgressSpinner = false;
+  final emailTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 20.0,
             ),
             CustomTextField(
+              controller: emailTextController,
               obscurText: false,
               placeHolder: emailPlaceHolder,
               onChange: (val) {
@@ -44,6 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
               },
             ),
             CustomTextField(
+              controller: passwordTextController,
               obscurText: true,
               placeHolder: passwordPlaceHolder,
               onChange: (val) {
@@ -58,6 +62,8 @@ class _RegisterPageState extends State<RegisterPage> {
               text: registerButtonText,
               color: darkBlue,
               onPressed: () async {
+                emailTextController.clear();
+                passwordTextController.clear();
                 setState(() {
                   showProgressSpinner = true;
                 });

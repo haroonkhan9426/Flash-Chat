@@ -14,6 +14,8 @@ class _LoginPageState extends State<LoginPage> {
   String email;
   String password;
   bool showProgressSpinner = false;
+  final emailTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 20.0,
             ),
             CustomTextField(
+              controller: emailTextController,
               obscurText: false,
               placeHolder: emailPlaceHolder,
               onChange: (val) {
@@ -45,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
               },
             ),
             CustomTextField(
+              controller: passwordTextController,
               obscurText: true,
               placeHolder: passwordPlaceHolder,
               onChange: (val) {
@@ -59,6 +63,8 @@ class _LoginPageState extends State<LoginPage> {
               text: loginButtonText,
               color: lightBlue,
               onPressed: () async {
+                emailTextController.clear();
+                passwordTextController.clear();
                 setState(() {
                   showProgressSpinner = true;
                 });
