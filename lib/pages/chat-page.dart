@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
-import 'package:flash_chat/services/firebase-helper.dart';
+import 'package:flash_chat/services/firebase-auth-helper.dart';
+import 'package:flash_chat/services/firebase-firestore-helper.dart';
+import 'package:flash_chat/models/message.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
+  @override
+  _ChatPageState createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  FirestoreHelper firestoreHelper;
+  FirebaseUser currentUser;
+  String text;
+  FirebaseAuth auth;
+
   @override
   Widget build(BuildContext context) {
+    currentUser = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: lightBlue,
@@ -13,7 +27,7 @@ class ChatPage extends StatelessWidget {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -26,12 +40,34 @@ class ChatPage extends StatelessWidget {
                 Icons.close,
                 color: Colors.white,
               ),
-              onPressed: (){
+              onPressed: () {
                 print('Logout pressed');
-                FireBaseHelper().logout();
+                FirebaseAuthHelper().logout();
                 Navigator.pop(context);
               },
             ),
+          )
+        ],
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              TextField(
+                onChanged: (val){
+                  text = val;
+                },
+              ),
+              FlatButton(
+                child: Text('Send'),
+                onPressed: () {
+                  firestoreHelper
+                      .saveMessage(Message(sender: currentUser.email, text: text));
+                },
+              )
+            ],
           )
         ],
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:flash_chat/custom_widgets/custom-textfield.dart';
 import 'package:flash_chat/custom_widgets/custom-rounded-button.dart';
-import 'package:flash_chat/services/firebase-helper.dart';
+import 'package:flash_chat/services/firebase-auth-helper.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class LoginPage extends StatefulWidget {
@@ -68,11 +68,11 @@ class _LoginPageState extends State<LoginPage> {
                 setState(() {
                   showProgressSpinner = true;
                 });
-                var user = await FireBaseHelper()
+                var user = await FirebaseAuthHelper()
                     .login(email = email, password = password);
                 if (user != null) {
                   print(user.email);
-                  Navigator.pushNamed(context, chatPageId);
+                  Navigator.pushNamed(context, chatPageId, arguments: user);
                 } else {
                   print('Login Failed');
                 }
