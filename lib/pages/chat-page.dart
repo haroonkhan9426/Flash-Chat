@@ -13,12 +13,11 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   FirestoreHelper firestoreHelper;
   FirebaseUser currentUser;
-  String text;
-  FirebaseAuth auth;
-
+  Message message;
   @override
   Widget build(BuildContext context) {
     currentUser = ModalRoute.of(context).settings.arguments;
+    message.sender = currentUser.email;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: lightBlue,
@@ -57,14 +56,14 @@ class _ChatPageState extends State<ChatPage> {
             children: <Widget>[
               TextField(
                 onChanged: (val){
-                  text = val;
+                  message.text = val;
                 },
               ),
               FlatButton(
                 child: Text('Send'),
                 onPressed: () {
                   firestoreHelper
-                      .saveMessage(Message(sender: currentUser.email, text: text));
+                      .saveMessage(message);
                 },
               )
             ],

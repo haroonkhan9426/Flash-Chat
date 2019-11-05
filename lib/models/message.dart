@@ -1,6 +1,6 @@
 class Message{
-  final String sender;
-  final String text;
+  String sender;
+  String text;
 
   Message({this.sender, this.text});
 
