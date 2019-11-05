@@ -14,6 +14,7 @@ class _ChatPageState extends State<ChatPage> {
   FirestoreHelper firestoreHelper = FirestoreHelper();
   FirebaseUser currentUser;
   Message message = Message();
+
   @override
   Widget build(BuildContext context) {
     currentUser = ModalRoute.of(context).settings.arguments;
@@ -52,11 +53,31 @@ class _ChatPageState extends State<ChatPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          StreamBuilder(
+            stream: firestoreHelper.getMessagesStream(),
+            builder: (context, snapshot){
+              if(snapshot.hasData){
+                final messages = snapshot.data.documents;
+                List<Widget> textWidgets =  messages.map<Widget>((message){
+                  final messageText = message.data['text'];
+                  final messageSender = message.data['sender'];
+                  return Text('$messageText from $messageSender');
+                }).toList();
+                return Column(
+                  children: textWidgets,
+                );
+              }else{
+                return CircularProgressIndicator(
+                  backgroundColor: Colors.lightBlueAccent,
+                );
+              }
+            },
+          ),
           Row(
             children: <Widget>[
               Flexible(
                 child: TextField(
-                  onChanged: (val){
+                  onChanged: (val) {
                     message.text = val;
                   },
                 ),
@@ -64,8 +85,7 @@ class _ChatPageState extends State<ChatPage> {
               FlatButton(
                 child: Text('Send'),
                 onPressed: () {
-                  firestoreHelper
-                      .saveMessage(message);
+                  firestoreHelper.saveMessage(message);
                 },
               )
             ],
