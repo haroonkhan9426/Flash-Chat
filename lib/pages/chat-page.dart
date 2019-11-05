@@ -11,9 +11,9 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  FirestoreHelper firestoreHelper;
+  FirestoreHelper firestoreHelper = FirestoreHelper();
   FirebaseUser currentUser;
-  Message message;
+  Message message = Message();
   @override
   Widget build(BuildContext context) {
     currentUser = ModalRoute.of(context).settings.arguments;
@@ -54,10 +54,12 @@ class _ChatPageState extends State<ChatPage> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              TextField(
-                onChanged: (val){
-                  message.text = val;
-                },
+              Flexible(
+                child: TextField(
+                  onChanged: (val){
+                    message.text = val;
+                  },
+                ),
               ),
               FlatButton(
                 child: Text('Send'),
