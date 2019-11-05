@@ -15,12 +15,14 @@ class WelcomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Hero(
-                  tag: 'flashIcon',
-                  child: Icon(
-                    Icons.flash_on,
-                    color: Colors.amber[400],
-                    size: 50.0,
+                Flexible(
+                  child: Hero(
+                    tag: 'flashIcon',
+                    child: Icon(
+                      Icons.flash_on,
+                      color: Colors.amber[400],
+                      size: 50.0,
+                    ),
                   ),
                 ),
                 SizedBox(
