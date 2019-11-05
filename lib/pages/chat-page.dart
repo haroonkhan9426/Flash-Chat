@@ -15,6 +15,7 @@ class _ChatPageState extends State<ChatPage> {
   FirestoreHelper firestoreHelper = FirestoreHelper();
   FirebaseUser currentUser;
   Message message = Message();
+  bool isMe = true;
 
   @override
   Widget build(BuildContext context) {
@@ -58,24 +59,32 @@ class _ChatPageState extends State<ChatPage> {
             stream: firestoreHelper.getMessagesStream(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                final messages = snapshot.data.documents;
-                List<MessengerText> textWidgets =
-                    messages.map<MessengerText>((message) {
+                final messages = snapshot.data.documents.reversed;
+                List<Widget> textWidgets = messages.map<Widget>((message) {
                   final messageText = message.data['text'];
                   final messageSender = message.data['sender'];
-                  return MessengerText(
-                    text: '$messageText',
-                    sender: messageSender,
-                  );
+                  isMe = (messageSender == currentUser.email);
+                  return isMe
+                      ? MessengerTextRight(
+                          text: '$messageText',
+                          sender: messageSender,
+                        )
+                      : MessengerTextLeft(
+                          text: '$messageText',
+                          sender: messageSender,
+                        );
                 }).toList();
                 return Expanded(
                   child: ListView(
+                    reverse: true,
                     children: textWidgets,
                   ),
                 );
               } else {
-                return CircularProgressIndicator(
-                  backgroundColor: Colors.lightBlueAccent,
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.lightBlueAccent,
+                  ),
                 );
               }
             },

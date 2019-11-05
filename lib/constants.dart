@@ -16,10 +16,22 @@ const buttonTextStyle = TextStyle(
   fontSize: 15.0,
 );
 
-const chatTextStyle = TextStyle(
+const chatTextStyleLeft = TextStyle(
+  color: Colors.black,
+  fontSize: 15.0,
+);
+
+
+const chatTextStyleRight = TextStyle(
   color: Colors.white,
   fontSize: 15.0,
 );
+
+const chatUserNameTextStyle = TextStyle(
+    color: Colors.black12,
+    fontSize: 10.0,
+);
+
 
 /// String Constants
 const String loginButtonText = 'Log In';
@@ -34,3 +46,16 @@ const String welcomePageId = 'welcome-page';
 const String registerPageId = 'register-page';
 const String loginPageId = 'login-page';
 const String chatPageId = 'chat-page';
+
+/// Border Radius
+const BorderRadius chatBorderRadiusRight = BorderRadius.only(
+  topLeft: Radius.circular(30.0),
+  bottomLeft: Radius.circular(30.0),
+  bottomRight: Radius.circular(30.0),
+);
+
+const BorderRadius chatBorderRadiusLeft = BorderRadius.only(
+  bottomLeft: Radius.circular(30.0),
+  bottomRight: Radius.circular(30.0),
+  topRight: Radius.circular(30.0),
+);
