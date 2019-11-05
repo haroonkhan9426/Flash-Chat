@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 const Color lightBlue = Color(0xFF4cccff);
 const Color darkBlue = Color(0xFF5895fe);
 
-
 /// TextStyle Constants
 const welcomeScreenTextStyle = TextStyle(
   fontSize: 40.0,
@@ -13,6 +12,11 @@ const welcomeScreenTextStyle = TextStyle(
 );
 
 const buttonTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 15.0,
+);
+
+const chatTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 15.0,
 );

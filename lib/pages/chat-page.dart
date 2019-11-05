@@ -4,6 +4,7 @@ import 'package:flash_chat/services/firebase-auth-helper.dart';
 import 'package:flash_chat/services/firebase-firestore-helper.dart';
 import 'package:flash_chat/models/message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flash_chat/custom_widgets/messenger-text-widget.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -55,18 +56,24 @@ class _ChatPageState extends State<ChatPage> {
         children: <Widget>[
           StreamBuilder(
             stream: firestoreHelper.getMessagesStream(),
-            builder: (context, snapshot){
-              if(snapshot.hasData){
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
                 final messages = snapshot.data.documents;
-                List<Widget> textWidgets =  messages.map<Widget>((message){
+                List<MessengerText> textWidgets =
+                    messages.map<MessengerText>((message) {
                   final messageText = message.data['text'];
                   final messageSender = message.data['sender'];
-                  return Text('$messageText from $messageSender');
+                  return MessengerText(
+                    text: '$messageText',
+                    sender: messageSender,
+                  );
                 }).toList();
-                return Column(
-                  children: textWidgets,
+                return Expanded(
+                  child: ListView(
+                    children: textWidgets,
+                  ),
                 );
-              }else{
+              } else {
                 return CircularProgressIndicator(
                   backgroundColor: Colors.lightBlueAccent,
                 );
